@@ -1,0 +1,84 @@
+﻿@page
+@model foodzcore.Pages.Login.RegisterModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form method="post">
+
+        @Html.ValidationSummary()
+        <!-- Username Input -->
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <!-- Password Input -->
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <!-- Confirm Password Input -->
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+
+        <!-- Admin Password Input -->
+        <div>
+            <label for="adminPassword">Admin Password:</label>
+            <input type="password" id="adminPassword" name="adminPassword">
+        </div>
+
+        <!-- Admin Role Checkbox (conditionally rendered) -->
+        <div id="adminCheckbox" style="display: none;">
+            <input type="checkbox" id="isAdmin" name="IsAdmin" value="true" onchange="updateCheckboxValue()">
+            <label for="isAdmin">Register as Admin</label>
+        </div>
+
+        <!-- Email Input -->
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("adminPassword").addEventListener("input", function () {
+            var adminPasswordInput = this.value;
+            var adminCheckbox = document.getElementById("adminCheckbox");
+
+            // Check if the admin password matches the correct code
+            var adminPassCorrect = adminPasswordInput === "1234";
+
+            // Display or hide the admin checkbox based on the adminPassCorrect value
+            adminCheckbox.style.display = adminPassCorrect ? "block" : "none";
+        });
+    </script>
+
+    <script>
+        // Function to update the checkbox value to true or false
+        function updateCheckboxValue() {
+            var isAdminCheckbox = document.getElementById("isAdmin");
+
+            // Set the value of the checkbox directly to true or false
+            isAdminCheckbox.value = isAdminCheckbox.checked.toString();
+        }
+    </script>
+
+</body>
+</html>

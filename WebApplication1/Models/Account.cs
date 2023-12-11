@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace foodzcore.Models
 {
@@ -17,13 +18,18 @@ namespace foodzcore.Models
         public string Email { get; set; } = null!;
 
         [Required]
-        public string Role { get; set; } = null!;
+        public string Role { get; set; } = "user";
 
-        public string? PhoneNumber { get; set; }
+        // Additional registration properties
+        [NotMapped] // Not mapped to the database
+        [Compare("Password")] // Ensure the value matches the 'Password' property
+        public string ConfirmPassword { get; set; }
 
-        public string? Address { get; set; }
 
-
+        public Account() 
+        {
+            
+        }
     }
 }
 

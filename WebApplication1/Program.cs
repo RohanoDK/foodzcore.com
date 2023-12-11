@@ -1,7 +1,14 @@
+using foodzcore.Data;
+using foodzcore.Services.AccountServices;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<AccountCreateService>();
+builder.Services.AddDbContext<foodzcoreEFDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

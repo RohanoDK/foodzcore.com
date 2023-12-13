@@ -1,5 +1,6 @@
 ﻿using foodzcore.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace foodzcore.Data
 {
@@ -30,6 +31,9 @@ namespace foodzcore.Data
 
                 // Uses the connection string from User Secrets
                 optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+
+                // Log SQL queries to the console
+                optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
             }
         }
 

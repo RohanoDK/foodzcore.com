@@ -10,26 +10,42 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <div class="loginpagecontainer">
+        <div class="loginwrapper">
 
-    @Html.ValidationSummary()
+            <h1 style="text-align: center">Login</h1>
 
-    <form method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <span asp-validation-for="Username"></span>
+            @Html.ValidationSummary()
+
+            <form method="post">
+                <div class="logininputwrapper">
+                    <input class="logininputform" type="text" id="username" placeholder="Username" name="username">
+                    <span asp-validation-for="Username"></span>
+                </div>
+
+                <div class="logininputwrapper">
+                    <input class="logininputform" type="password" id="password" placeholder="Password" name="password">
+                    <span asp-validation-for="Password"></span>
+                </div>
+
+                <div class="loginsubmitwrapper">
+                    <button class="loginsubmit" type="submit">Login</button>
+                </div>
+            </form>
+
+            <br>
+            <br>
+
+            <div class="registerwrapper">
+                <a class="standardlink" asp-area="" asp-page="Register">Create User</a>
+            </div>
         </div>
+    </div>
 
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-            <span asp-validation-for="Password"></span>
-        </div>
+    
+    
 
-        <div>
-            <button type="submit">Login</button>
-        </div>
-    </form>
+    
+
 </body>
 </html>

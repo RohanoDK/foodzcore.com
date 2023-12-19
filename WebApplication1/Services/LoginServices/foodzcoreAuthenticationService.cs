@@ -14,7 +14,7 @@ namespace foodzcore.Services.LoginServices
 
         public bool AuthenticateUser(string username, string password)
         {
-            // Logging to check the values being passed
+            // Logging to check the values being passed (for debugging)
             Console.WriteLine($"Authenticating user: {username} with password: {password}");
 
             // Checks database for a Username first using LINQ
@@ -24,14 +24,13 @@ namespace foodzcore.Services.LoginServices
             // If User is not null (matching username) then we test the password matches the username - If true then Authentification is succesful - If not it will return false.
             if (user != null && password == user.Password)
             {
-                // Test logging to check spell out the result
+                // Logging to check positive result
                 Console.WriteLine("Authentication successful");
 
-                // If a user is found and the password matches, authentication is successful
                 return true;
             }
 
-            // Test logging to check spell out the result
+            // Loggin to check negative result
             Console.WriteLine("Authentication failed");
 
             return false;

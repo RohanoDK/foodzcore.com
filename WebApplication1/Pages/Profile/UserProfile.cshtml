@@ -5,8 +5,14 @@
 }
 
 
-<h1>@ViewData["Title"]</h1>
+<h1 style="text-align: center">@ViewData["Title"]</h1>
 
 <p>Username: @Model.ActiveUser.Username</p>
 <p>Email: @Model.ActiveUser.Email</p>
 <p>Role: @Model.ActiveUser.Role</p>
+
+<p>Current ID: @Model.ActiveUser.UserID</p>
+
+<form method="post">
+    <button type="submit" asp-page-handler="Delete" asp-route-id="@Model.ActiveUser.UserID" onclick="return confirm('Are you sure you want to delete your account?')" class="btn btn-danger">Delete My profile</button>
+</form>

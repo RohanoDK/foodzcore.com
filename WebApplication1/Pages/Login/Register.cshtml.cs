@@ -18,6 +18,7 @@ namespace foodzcore.Pages.Login
 
         // Add properties for user registration fields
         [BindProperty]
+        [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
 
         [BindProperty]
@@ -45,7 +46,7 @@ namespace foodzcore.Pages.Login
             }
 
             // Creates a newAccount that stores the details provided in the parameters, and stores it in the database
-            var newAccount = await _accountCreateService.CreateAccountAsync(Username, Password, Email, IsAdmin);
+            await _accountCreateService.CreateAccountAsync(Username, Password, Email, IsAdmin);
 
             // Your registration logic here, create a user account
             // Use the values of properties like Username, Password, Email, and IsAdmin

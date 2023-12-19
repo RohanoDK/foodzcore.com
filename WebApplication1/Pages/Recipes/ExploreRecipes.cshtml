@@ -1,0 +1,28 @@
+﻿@page
+@model foodzcore.Pages.Recipes.ExploreRecipesModel
+@{
+}
+
+
+<h1 style="text-align:center;">Explore Recipes</h1>
+<a class="nav-link" style="text-align:center;" asp-area="" asp-page="/Recipes/RecipeCRUD/CreateRecipe">Create New Recipe</a>
+
+<div class="explorebgimage">
+    <div class="explorewrapper">
+        @foreach (var recipe in Model.Recipes)
+        {
+            <div class="explorerecipeswrapper">
+
+                <a asp-page="/Recipes/RecipeDetails" asp-route-id="@recipe.RecipeID">
+                    <img class="recipeimage" src="@recipe.Image" alt="@recipe.RecipeName" />
+                </a>
+                <h3 style="text-align:center;">@recipe.RecipeName</h3>
+                <p>Price: @recipe.Price DKK</p>
+                <p>Difficulty Rating: @recipe.DifficultyRating</p>
+                <p>Time Rating: @recipe.TimeRating</p>
+
+            </div>
+
+        }
+    </div>
+</div>

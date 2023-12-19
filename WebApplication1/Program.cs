@@ -1,6 +1,7 @@
 using foodzcore.Data;
 using foodzcore.Services.AccountServices;
 using foodzcore.Services.LoginServices;
+using foodzcore.Services.RecipeServices;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<AccountCreateService>();
 builder.Services.AddScoped<AccountReadService>();
+builder.Services.AddScoped<AccountUpdateService>();
+builder.Services.AddScoped<AccountDeleteService>();
+builder.Services.AddScoped<RecipeCreateService>();
+builder.Services.AddScoped<RecipeReadService>();
+builder.Services.AddScoped<RecipeUpdateService>();
+builder.Services.AddScoped<RecipeDeleteService>();
 builder.Services.AddScoped<foodzcoreAuthenticationService>();
 builder.Services.AddDbContext<foodzcoreEFDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

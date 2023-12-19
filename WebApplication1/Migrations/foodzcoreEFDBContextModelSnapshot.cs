@@ -49,6 +49,40 @@ namespace foodzcore.Migrations
 
                     b.ToTable("Accounts");
                 });
+
+            modelBuilder.Entity("foodzcore.Models.Recipe", b =>
+                {
+                    b.Property<int>("RecipeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeID"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DifficultyRating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("RecipeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TimeRating")
+                        .HasColumnType("int");
+
+                    b.HasKey("RecipeID");
+
+                    b.ToTable("Recipes");
+                });
 #pragma warning restore 612, 618
         }
     }

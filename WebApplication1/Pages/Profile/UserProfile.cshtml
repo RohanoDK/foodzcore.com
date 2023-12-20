@@ -1,0 +1,18 @@
+﻿@page
+@model foodzcore.Pages.Profile.UserProfileModel
+@{
+    
+}
+
+
+<h1 style="text-align: center">@ViewData["Title"]</h1>
+
+<p>Username: @Model.ActiveUser.Username</p>
+<p>Email: @Model.ActiveUser.Email</p>
+<p>Role: @Model.ActiveUser.Role</p>
+
+<form method="post">
+    <button type="submit" asp-page-handler="Delete" asp-route-id="@Model.ActiveUser.UserID" onclick="return confirm('Are you sure you want to delete your account?')" class="btn btn-danger">Delete My profile</button>
+</form>
+
+@* <a asp-page="/Profile/UpdateAccount" asp-route-id="@Model.ActiveUser.UserID" class="btn btn-primary">Update Recipe</a> *@

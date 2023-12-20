@@ -1,0 +1,27 @@
+﻿@* @page
+@using foodzcore.Pages.Login
+@model foodzcore.Pages.Profile.UpdateAccountModel
+@{
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="AccountItem.UserID" />
+    <input type="hidden" asp-for="AccountItem.Password" />
+    <input type="hidden" asp-for="AccountItem.ConfirmPassword" value="AccountItem.Password" />
+
+    <!-- Username input -->
+    <div class="form-group">
+        <input asp-for="AccountItem.Username" value="@LoginModel.LoggedInUser.Username" class="form-control" />
+        <span asp-validation-for="AccountItem.Username" class="text-danger"></span>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-group">
+        <input asp-for="AccountItem.Email" value="@LoginModel.LoggedInUser.Email" type="email" class="form-control" />
+        <span asp-validation-for="AccountItem.Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Account</button>
+</form> *@

@@ -1,10 +1,20 @@
 ﻿@page
+@using foodzcore.Pages.Login
+@using foodzcore.Pages.Profile
 @model foodzcore.Pages.Recipes.ExploreRecipesModel
 @{
 }
 
 
 <h1 style="text-align:center;">Explore Recipes</h1>
+
+@{
+    if (LoginModel.LoggedInUser != null && LoginModel.LoggedInUser.Role == "admin")
+    {
+        <a class="nav-link" style="text-align:center;" asp-area="" asp-page="/Recipes/RecipeCRUD/CreateRecipe">Create New Recipe</a>
+    }
+}
+
 <a class="nav-link" style="text-align:center;" asp-area="" asp-page="/Recipes/RecipeCRUD/CreateRecipe">Create New Recipe</a>
 
 <div class="explorebgimage">

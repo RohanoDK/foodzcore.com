@@ -52,7 +52,7 @@ a:hover {
     height: 10vh;
 }
 
-.hiddenuseroptions {
+/*.hiddenuseroptions {
     display: none;
 }
 
@@ -61,7 +61,7 @@ a:hover {
     width: 100px;
     height: 100px;
     position: absolute;
-}
+}*/
 
 .login-button {
     align-items: center;

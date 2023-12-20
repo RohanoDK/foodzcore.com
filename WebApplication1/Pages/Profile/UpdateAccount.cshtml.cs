@@ -1,99 +1,89 @@
+using Azure.Identity;
+using foodzcore.Models;
+using foodzcore.Pages.Login;
+using foodzcore.Services.AccountServices;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-//using foodzcore.Services.RecipeServices;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.AspNetCore.Mvc.RazorPages;
+namespace foodzcore.Pages.Profile
+{
+    public class UpdateAccountModel : PageModel
+    {
+        private readonly AccountUpdateService _accountUpdateService;
 
-//namespace foodzcore.Pages.Recipes.RecipeCRUD
-//{
-//    public class UpdateRecipeModel : PageModel
-//    {
-//        private readonly RecipeUpdateService _recipeUpdateService;
-//        private readonly RecipeReadService _recipeReadService;
+        public UpdateAccountModel(AccountUpdateService accountUpdateService)
+        {
+            _accountUpdateService = accountUpdateService;
+        }
 
-//        public UpdateRecipeModel(RecipeUpdateService recipeUpdateService, RecipeReadService recipeReadService)
-//        {
-//            _recipeUpdateService = recipeUpdateService;
-//            _recipeReadService = recipeReadService;
-//        }
+        public Account AccountItem { get; set; }
 
-//        [BindProperty]
-//        public Models.Recipe RecipeItem { get; set; }
+        //[BindProperty]
+        //public string Username { get; set; }
 
-//        //[BindProperty]
-//        //public int RecipeId { get; set; }
-
-//        //[BindProperty]
-//        //public string UpdatedRecipeName { get; set; }
-
-//        ////[BindProperty]
-//        ////public string UpdatedImage { get; set; }
-
-//        //[BindProperty]
-//        //public string UpdatedDescription { get; set; }
-
-//        //[BindProperty]
-//        //public decimal UpdatedPrice { get; set; }
-
-//        //[BindProperty]
-//        //public int UpdatedDifficultyRating { get; set; }
-
-//        //[BindProperty]
-//        //public int UpdatedTimeRating { get; set; }
+        //[BindProperty]
+        //public string Email { get; set; }
 
 
-//        public async Task<IActionResult> OnGetAsync(int id)
-//        {
-//            RecipeItem = _recipeReadService.GetSpecificRecipe(id);
-//            return Page();
-//        }
+        //[BindProperty]
+        //public Account ActiveUser { get; set; }
 
 
-//        public async Task<IActionResult> OnPostAsync()
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return Page();
-//            }
+        public void OnGet()
+        {
+            // Retrieves the logged-in user information from LoginModel
+            AccountItem = LoginModel.LoggedInUser;
+            Console.WriteLine(AccountItem.Username);
+            Console.WriteLine(AccountItem.Email);
+            Console.WriteLine(AccountItem.UserID);
+            Console.WriteLine(AccountItem.Password);
+            Console.WriteLine(AccountItem.ConfirmPassword);
+        }
 
-//            var updateResult = await _recipeUpdateService.UpdateRecipeAsync(RecipeItem);
 
-//            if (updateResult)
-//            {
-//                // Redirect to the recipe details page after successful update
-//                return RedirectToPage("/Recipes/ExploreRecipes");
-//            }
-//            else
-//            {
-//                // Handle the case where the update failed
-//                // You may want to display an error message or redirect to an error page
-//                return Page();
-//            }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                Console.WriteLine("Model State Errors:");
 
-//            //_recipeUpdateService.UpdateRecipe(RecipeItem);
-//            //return RedirectToPage("GetAllItems");
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine($"- {error.ErrorMessage}");
+                    }
+                }
+                Console.WriteLine(AccountItem.Username);
+                Console.WriteLine(AccountItem.Email);
+                Console.WriteLine(AccountItem.UserID);
+                Console.WriteLine(AccountItem.Password);
+                Console.WriteLine(AccountItem.ConfirmPassword);
+                Console.WriteLine("NOPE");
+                return Page();
+            }
 
-//            // Call the service to update the recipe
-//            //var updateResult = await _recipeUpdateService.UpdateRecipeAsync(
-//            //    RecipeId,
-//            //    UpdatedRecipeName,
-//            //    /* UpdatedImage, */
-//            //    UpdatedDescription,
-//            //    UpdatedPrice,
-//            //    UpdatedDifficultyRating,
-//            //    UpdatedTimeRating);
+            Console.WriteLine(AccountItem.Username);
+            Console.WriteLine(AccountItem.Email);
+            Console.WriteLine(AccountItem.UserID);
+            Console.WriteLine(AccountItem.Password);
+            Console.WriteLine(AccountItem.ConfirmPassword);
+            Console.WriteLine("YEAH");
 
-//            //if (updateResult)
-//            //{
-//            //    // Redirect to the recipe details page after successful update
-//            //    return RedirectToPage("/Recipes/RecipeDetails", new { id = RecipeId });
-//            //}
-//            //else
-//            //{
-//            //    // Handle the case where the update failed
-//            //    // You may want to display an error message or redirect to an error page
-//            //    return Page();
-//            //}
-//        }
-//    }
-//}
+            var updateResult = await _accountUpdateService.UpdateAccountAsync(AccountItem);
+
+            if (updateResult)
+            {
+                // Redirect to the Userprofile details page after successful update
+                return RedirectToPage("/UserProfile");
+            }
+            else
+            {
+                // Update Failed, return to same page
+                return Page();
+            }
+
+        }
+    }
+}
 

@@ -11,13 +11,11 @@ namespace foodzcore.Pages.Recipes
     {
         private readonly foodzcoreEFDBContext _context;
         private readonly RecipeDeleteService _recipeDeleteService;
-        private readonly RecipeUpdateService _recipeUpdateService;
 
-        public RecipeDetailsModel(foodzcoreEFDBContext context, RecipeDeleteService recipeDeleteService, RecipeUpdateService recipeUpdateService)
+        public RecipeDetailsModel(foodzcoreEFDBContext context, RecipeDeleteService recipeDeleteService)
         {
             _context = context;
             _recipeDeleteService = recipeDeleteService;
-            _recipeUpdateService = recipeUpdateService;
         }
 
         public Recipe Recipe { get; set; }

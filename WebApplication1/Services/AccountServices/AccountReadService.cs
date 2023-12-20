@@ -22,5 +22,11 @@ namespace foodzcore.Services.AccountServices
 
             return user;
         }
+
+        public Account GetUserByID(int id)
+        {
+            var user = _context.Accounts.FirstOrDefault(u => u.UserID == id);
+            return user;
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace foodzcore.Pages.Login
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
-        public static Account LoggedInUser { get; set; } = null;
+        public static Account LoggedInUser { get; set; }
 
         public async Task<IActionResult> OnPost()
         {
@@ -44,7 +44,12 @@ namespace foodzcore.Pages.Login
                     // Attaches the logged in User with the relevant username and password to be used on their personal profile page and displaying their username in the navigation bar
                     LoggedInUser = _accountReadService.GetUserByUsernameAndPassword(Username, Password);
 
-                    var claims = new List<Claim> { new Claim(ClaimTypes.Name, Username) };
+                    //var claims = new List<Claim> { new Claim(ClaimTypes.Name, Username) };
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, Username),
+                        new Claim("UserID", LoggedInUser.UserID.ToString()) // Ensure this claim is set
+                    };
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));

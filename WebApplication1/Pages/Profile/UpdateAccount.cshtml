@@ -1,48 +1,27 @@
-﻿@* @page
+﻿@page
+@using foodzcore.Pages.Login
 @model foodzcore.Pages.Profile.UpdateAccountModel
 @{
-}
-
-@page
-@model foodzcore.Pages.Recipes.RecipeCRUD.UpdateRecipeModel
-@{
-    ViewData["Title"] = "Update Recipe";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <form method="post">
-    <input type="hidden" asp-for="RecipeItem.RecipeID" />
+    <input type="hidden" asp-for="AccountItem.UserID" />
+    <input type="hidden" asp-for="AccountItem.Password" />
+    <input type="hidden" asp-for="AccountItem.ConfirmPassword" value="AccountItem.Password" />
 
-    <!-- RecipeName input -->
+    <!-- Username input -->
     <div class="form-group">
-        <input asp-for="RecipeItem.RecipeName" class="form-control" />
-        <span asp-validation-for="RecipeItem.RecipeName" class="text-danger"></span>
+        <input asp-for="AccountItem.Username" value="@LoginModel.LoggedInUser.Username" class="form-control" />
+        <span asp-validation-for="AccountItem.Username" class="text-danger"></span>
     </div>
 
-    <!-- Description input -->
+    <!-- Email input -->
     <div class="form-group">
-        <textarea asp-for="RecipeItem.Description" class="form-control"></textarea>
-        <span asp-validation-for="RecipeItem.Description" class="text-danger"></span>
+        <input asp-for="AccountItem.Email" value="@LoginModel.LoggedInUser.Email" type="email" class="form-control" />
+        <span asp-validation-for="AccountItem.Email" class="text-danger"></span>
     </div>
 
-    <!-- Price input -->
-    <div class="form-group">
-        <input asp-for="RecipeItem.Price" type="number" step="0.01" class="form-control" />
-        <span asp-validation-for="RecipeItem.Price" class="text-danger"></span>
-    </div>
-
-    <!-- DifficultyRating input -->
-    <div class="form-group">
-        <input asp-for="RecipeItem.DifficultyRating" type="number" class="form-control" min="1" max="5" />
-        <span asp-validation-for="RecipeItem.DifficultyRating" class="text-danger"></span>
-    </div>
-
-    <!-- TimeRating input -->
-    <div class="form-group">
-        <input asp-for="RecipeItem.TimeRating" type="number" class="form-control" min="1" max="10" />
-        <span asp-validation-for="RecipeItem.TimeRating" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Update Recipe</button>
-</form> *@
+    <button type="submit" class="btn btn-primary">Update Account</button>
+</form>

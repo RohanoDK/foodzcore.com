@@ -15,11 +15,11 @@ namespace foodzcore.Services.AccountServices
         public async Task<bool> DeleteAccountAsync(int accountId)
         {
 
-            var accountToDelete = await _context.Recipes.FindAsync(accountId);
+            var accountToDelete = await _context.Accounts.FindAsync(accountId);
 
             if (accountToDelete != null)
             {
-                _context.Recipes.Remove(accountToDelete);
+                _context.Accounts.Remove(accountToDelete);
                 await _context.SaveChangesAsync();
                 return true;
             }

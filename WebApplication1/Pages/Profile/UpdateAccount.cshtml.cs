@@ -74,15 +74,12 @@
 
 //            if (updateResult)
 //            {
-//                // Redirect to the Userprofile details page after successful update
 //                return RedirectToPage("/UserProfile");
 //            }
 //            else
 //            {
-//                // Update Failed, return to same page
 //                return Page();
 //            }
-
 //        }
 //    }
 //}

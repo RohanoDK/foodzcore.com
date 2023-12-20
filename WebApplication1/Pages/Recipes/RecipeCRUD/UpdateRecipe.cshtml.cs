@@ -37,13 +37,10 @@ namespace foodzcore.Pages.Recipes.RecipeCRUD
 
             if (updateResult)
             {
-                // Redirect to the recipe details page after successful update
                 return RedirectToPage("/Recipes/ExploreRecipes");
             }
             else
             {
-                // Handle the case where the update failed
-                // You may want to display an error message or redirect to an error page
                 return Page();
             }
         }

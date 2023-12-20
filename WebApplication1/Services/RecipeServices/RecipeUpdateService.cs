@@ -22,19 +22,16 @@ namespace foodzcore.Services.RecipeServices
 
                 try
                 {
-                    // Save changes to the database
                     await _context.SaveChangesAsync();
-                    return true; // Update successful
+                    return true;
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    // Handle concurrency exception, if needed
-                    // This occurs when another user has modified the same recipe concurrently
                     return false;
                 }
             }
 
-            return false; // Recipe not found or other issues
+            return false;
         }
     }
 }

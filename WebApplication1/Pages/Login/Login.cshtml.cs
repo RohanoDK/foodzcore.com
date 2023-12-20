@@ -44,27 +44,23 @@ namespace foodzcore.Pages.Login
                     // Attaches the logged in User with the relevant username and password to be used on their personal profile page and displaying their username in the navigation bar
                     LoggedInUser = _accountReadService.GetUserByUsernameAndPassword(Username, Password);
 
-                    //var claims = new List<Claim> { new Claim(ClaimTypes.Name, Username) };
+                    // Cookie Claim
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, Username),
-                        new Claim("UserID", LoggedInUser.UserID.ToString()) // Ensure this claim is set
+                        new Claim("UserID", LoggedInUser.UserID.ToString())
                     };
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
-                    // Redirect to a success page or perform other actions
                     return RedirectToPage("/Profile/UserProfile");
                 }
                 else
                 {
-                    // Authentication failed, add a model error
                     ModelState.AddModelError(string.Empty, "Invalid username or password");
                 }
             }
-
-            // If the model state is not valid, return to the login page with validation errors
             return Page();
         }
     }

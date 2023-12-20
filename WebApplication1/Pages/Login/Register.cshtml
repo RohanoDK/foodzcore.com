@@ -62,7 +62,7 @@
             var adminPasswordInput = this.value;
             var adminCheckbox = document.getElementById("adminCheckbox");
 
-            // Check if the admin password matches the correct code
+            // Checks if the admin password matches the correct code
             var adminPassCorrect = adminPasswordInput === "1234";
 
             // Display or hide the admin checkbox based on the adminPassCorrect value
@@ -75,7 +75,7 @@
         function updateCheckboxValue() {
             var isAdminCheckbox = document.getElementById("isAdmin");
 
-            // Set the value of the checkbox directly to true or false
+            // Sets the value of the checkbox directly to true or false
             isAdminCheckbox.value = isAdminCheckbox.checked.toString();
         }
     </script>

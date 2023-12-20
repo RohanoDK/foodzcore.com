@@ -20,9 +20,8 @@ namespace foodzcore.Models
         [Required]
         public string Role { get; set; } = "user";
 
-        // Additional registration properties
-        [NotMapped] // Not mapped to the database
-        [Compare("Password")] // Ensure the value matches the 'Password' property
+        [NotMapped] // Not mapped to database
+        [Compare("Password")] // Ensures the value matches the 'Password' property
         public string ConfirmPassword { get; set; }
 
 

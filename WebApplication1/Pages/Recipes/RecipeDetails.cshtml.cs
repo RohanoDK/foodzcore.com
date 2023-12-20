@@ -38,13 +38,10 @@ namespace foodzcore.Pages.Recipes
 
             if (deleteResult)
             {
-                // Redirect to a page or take appropriate action after successful deletion
                 return RedirectToPage("/Index");
             }
             else
             {
-                // Handle the case where deletion failed
-                // You may want to display an error message or redirect to an error page
                 return Page();
             }
         }

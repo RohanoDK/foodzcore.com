@@ -18,7 +18,6 @@ namespace foodzcore.Pages.Recipes
 
         public void OnGet()
         {
-            // Populate the Recipes property with the list of recipes
             Recipes = _recipeReadService.GetAllRecipes();
         }
     }

@@ -50,8 +50,6 @@ namespace foodzcore.Pages.Profile
             }
             else
             {
-                // Handle the case where deletion failed
-                // You may want to display an error message or redirect to an error page
                 return Page();
             }
         }

@@ -17,7 +17,6 @@ namespace foodzcore.Pages.Recipes.RecipeCRUD
             _recipeCreateService = recipeCreateService;
         }
 
-        // Add properties for recipe registration fields
         [BindProperty]
         [Required(ErrorMessage = "RecipeName is required")]
         public string RecipeName { get; set; }
@@ -50,20 +49,16 @@ namespace foodzcore.Pages.Recipes.RecipeCRUD
                 {
                     foreach (var error in modelState.Errors)
                     {
-                        // Log or debug the error
                         Console.WriteLine($"Model Error: {error.ErrorMessage}");
                     }
                 }
 
-                // If model state is not valid, stay on the current page with validation errors.
                 return Page();
             }
 
-            // Continue with recipe creation
             await _recipeCreateService.RecipeCreateAsync(RecipeName, Description, Price, DifficultyRating, TimeRating);
 
-            // If model state is not valid, stay on the current page with validation errors.
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Recipes/ExploreRecipes");
         }
     }
 }
